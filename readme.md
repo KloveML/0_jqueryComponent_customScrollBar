@@ -1,9 +1,13 @@
-##一、文件引入
+自定义滚动条的jQuery组件(ts书写)
+===
+一、文件引入
+---
 Js文件引用：
 `
 	1.js/customScrollBar.js   (默认添加 jquery-1.9.1.min.js)`
 
-##二、参数说明 
+二、参数说明 
+---
 		var opt = {
 			scrollBoxCssX: {	//X轴滚动槽样式对象
 				width: 8,
@@ -22,7 +26,8 @@ Js文件引用：
 		}
 >调用方式：$( ).customScrollBar(opt);	
 
-##三.业务调用者的注意事项
+三.业务调用者的注意事项
+---
 >
 1.以上样式对象跟jquery的样式对象的格式完全一致
 >
