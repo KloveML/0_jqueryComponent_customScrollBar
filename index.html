@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        /*横向滚动条样式例子*/
+			
+			/*#scrollBar {
+				width: 200px;
+				height: 600px;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#scrollBar .content {
+				width: 500px;
+			}
+			
+			#scrollBar .content .red {
+				height: 300px;
+				background: red;
+			}*/
+			/*纵向滚动条样式例子*/
+			#scrollBar {
+				width: 200px;
+				height: 600px;
+				position: relative;
+				overflow: hidden;
+			}
+			#scrollBar .content{
+				width:100px;
+			}
+			#scrollBar .content .red {
+				height: 300px;
+				background: red;
+			}
+			
+			#scrollBar .content .yellow {
+				height: 300px;
+				background: yellow;
+			}
+			
+			#scrollBar .content .black {
+				height: 300px;
+				background: black;
+			}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="scrollBar" class="custombar">
+        <div class="content t-scrollContent">
+            <div class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam magni, quia unde? Esse perspiciatis, id numquam voluptatibus tenetur quae obcaecati laborum delectus iure, voluptas officiis consequuntur autem necessitatibus quas molestiae.</div>
+            <div class="yellow"></div>
+            <div class="black"></div>
+        </div>
+    </div>
+</body>
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/customScrollBar.js"></script>
+<script type="text/javascript">
+    //调用自定义滚动条
+    $('#scrollBar').customScrollBar({
+        scrollBoxCssY:{
+            width:8
+        },
+        scrollBoxCssX:{
+            height:8
+        },
+    });
+
+</script>
+</html>
