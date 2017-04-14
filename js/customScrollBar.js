@@ -63,40 +63,28 @@
             cw = $contentEle.outerWidth(), //内容元素宽度
             ch = $contentEle.outerHeight(), //内容元素高度
             sBoxHeightX = options.scrollBoxCssX.height, sBoxWidthY = options.scrollBoxCssY.width;
-            var clientWidth = ew, clientHeight = eh, cPaddingRight = 0, //如果出现滚动条，需要给内容元素添加padding
+            /**
+             * 处理不能操作实际内容区域的问题
+             */
+            var cPaddingRight = 0, //如果出现滚动条，需要给内容元素添加padding
             cPaddingBottom = 0;
             this.scaleX = ew / cw;
             this.scaleY = eh / ch;
-            var $client = $('<div class="t-scrollClient"></div>');
             if (this.scaleX && this.scaleX < 1) {
-                clientHeight = eh - parseInt(sBoxHeightX);
                 $element.append(this.renderScrollBarX());
                 cPaddingBottom = parseInt(sBoxHeightX);
             }
             if (this.scaleY && this.scaleY < 1) {
-                clientWidth = ew - parseInt(sBoxWidthY);
                 $element.append(this.renderScrollBarY());
                 cPaddingRight = parseInt(sBoxWidthY);
             }
             //对内容区域添加样式
-            $contentEle.css({
+            $element.css({
                 boxSizing: 'border-box',
+                position: 'relative',
                 paddingRight: cPaddingRight,
                 paddingBottom: cPaddingBottom
             });
-            //对展示区添加样式
-            $client.css({
-                position: 'absolute',
-                zIndex: 99,
-                top: 0,
-                left: 0,
-                width: clientWidth,
-                height: clientHeight
-            });
-            //挂载展示区元素到调用元素上
-            $element.css({
-                position: 'relative'
-            }).append($client);
         };
         customScrollBar.prototype.bind = function () {
             /**
@@ -200,12 +188,12 @@
             };
             //绑定滚轮事件
             if (navigator.userAgent.indexOf("Firefox") > 0) {
-                $element.find('.t-scrollClient').on('DOMMouseScroll', function (e) {
+                $element.on('DOMMouseScroll.' + NAMESPACE, function (e) {
                     wheelEvent(e);
                 });
             }
             else {
-                $element.find('.t-scrollClient').on('mousewheel', function (e) {
+                $element.on('mousewheel.' + NAMESPACE, function (e) {
                     wheelEvent(e);
                 });
             }
